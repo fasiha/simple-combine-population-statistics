@@ -1,9 +1,9 @@
 # simple-combine-population-statistics
 
-Pure Python (3 and 2) module to combine the sample means and (co)variances from two populations into a single population mean and (co)variance. Handles the univariate case (i.e., deals with sample variances) and the bivariate case (where covariance is a two by two Numpy array).
+Pure Python (3 and 2) module to combine the sample means and (co)variances from two populations into a single population mean and (co)variance. Handles the univariate case (i.e., deals with sample variances) and the bivariate case (where covariance is a two by two nested array (Numpy array works too but Numpy isn't needed)).
 
 ## Unit test
-Run the built-in unit test (*depends on Numpy!*) from the command line:
+Run the built-in unit test (*test depends on Numpy!*) from the command line:
 ```
 $ python combinePopulations.py
 .
@@ -33,7 +33,7 @@ Given `x1`, `y1`, `Cov1`, and `n1`, the sample mean of variable X, the sample me
 3. the combined sample covariance between X and Y, and
 4. the combined population's size.
 
-Source: See botom of Wikipedia, ["Algorithms for calculating variance"](https://en.wikipedia.org/w/index.php?title=Algorithms_for_calculating_variance&oldid=829952267#Online), the paragraph starting with
+Source: See bottom of Wikipedia, ["Algorithms for calculating variance"](https://en.wikipedia.org/w/index.php?title=Algorithms_for_calculating_variance&oldid=829952267#Online), the paragraph starting with
 
 > Likewise, there is a formula for combining the covariances of two sets...
 

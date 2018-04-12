@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 import unittest
 
 
@@ -61,15 +62,15 @@ class Test(unittest.TestCase):
             msg='Two bivariate populations of size one')
 
         secondCov = np.cov([[1, 2, -1.1], [20, 21.1, 19.5]], bias=True)
-        second = combineTwoBivariatePopulations(*first, -1.1, 19.5,
-                                                np.zeros((2, 2)), 1)
+        second = combineTwoBivariatePopulations(*(
+            first + (-1.1, 19.5, np.zeros((2, 2)), 1)))
         self.assertTrue(
             np.allclose(second[2], secondCov),
             msg='Combine populations of size three and one')
 
         thirdCov = np.cov(
             [[1, 2, 1, 2, -1.1], [20, 21.1, 20, 21.1, 19.5]], bias=True)
-        third = combineTwoBivariatePopulations(*first, *second)
+        third = combineTwoBivariatePopulations(*(first + second))
         self.assertTrue(
             np.allclose(third[2], thirdCov),
             msg='Populations of size two and three (recursive)')
@@ -87,5 +88,4 @@ class Test(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromModule(
-        Test()))
+    unittest.main()
